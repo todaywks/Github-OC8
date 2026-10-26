@@ -17,7 +17,6 @@ __pycache__/
 venv/
 
 # données sources (volumineuses, documentées dans data/README.md)
-data/*
 !data/README.md
 
 # postgres local et outils
