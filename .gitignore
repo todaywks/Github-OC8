@@ -1,0 +1,32 @@
+# secrets et configuration locale
+.env
+*.pem
+*.key
+dbt/profiles.yml
+.aws/
+
+# dbt
+dbt/target/
+dbt/dbt_packages/
+dbt/logs/
+
+# python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# données sources (volumineuses, documentées dans data/README.md)
+data/*
+!data/README.md
+
+# postgres local et outils
+pgdata/
+.ipynb_checkpoints/
+
+# système et éditeurs
+.DS_Store
+.idea/
+.vscode/
+
+readme.md
