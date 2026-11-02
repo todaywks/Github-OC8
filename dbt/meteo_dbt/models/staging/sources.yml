@@ -1,0 +1,13 @@
+version: 2
+
+sources:
+  - name: raw
+    description: tables brutes chargées par Airbyte, sans transformation
+    schema: raw
+    tables:
+      - name: infoclimat
+        description: fichier JSON InfoClimat, une seule ligne contenant les 4 stations et leurs mesures
+      - name: wu_ichtegem
+        description: relevés de la station Weather Underground d'Ichtegem (IICHTE19)
+      - name: wu_la_madeleine
+        description: relevés de la station Weather Underground de La Madeleine (ILAMAD25)

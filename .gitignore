@@ -6,9 +6,9 @@ dbt/profiles.yml
 .aws/
 
 # dbt
-dbt/target/
-dbt/dbt_packages/
-dbt/logs/
+**/target/
+**/dbt_packages/
+**/logs/
 
 # python
 __pycache__/
@@ -28,4 +28,5 @@ pgdata/
 .idea/
 .vscode/
 
+support*
 readme.md
