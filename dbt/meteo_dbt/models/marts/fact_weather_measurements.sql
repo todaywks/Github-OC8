@@ -1,0 +1,22 @@
+select
+    station_id,
+    to_char(measured_at_utc::date, 'YYYYMMDD')::int as date_key,
+    measured_at_utc,
+    temperature_c,
+    dew_point_c,
+    humidity_pct,
+    pressure_hpa,
+    wind_speed_kmh,
+    wind_gust_kmh,
+    wind_direction_deg,
+    precip_1h_mm,
+    precip_3h_mm,
+    precip_rate_mm,
+    precip_accum_mm,
+    uv_index,
+    solar_radiation_wm2,
+    visibility,
+    cloud_cover,
+    snow_depth,
+    weather_code
+from {{ ref('int_weather_measurements') }}

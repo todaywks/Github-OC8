@@ -27,8 +27,8 @@ select
     nullif(m->>'vent_direction', '')::numeric   as wind_direction_deg,
     nullif(m->>'pluie_1h', '')::numeric         as precip_1h_mm,
     nullif(m->>'pluie_3h', '')::numeric         as precip_3h_mm,
-    m->>'visibilite'                            as visibility,
-    m->>'nebulosite'                            as cloud_cover,
-    m->>'neige_au_sol'                          as snow_depth,
-    m->>'temps_omm'                             as weather_code
+    nullif(m->>'visibilite', '')::numeric       as visibility,
+    nullif(m->>'nebulosite', '')::int          as cloud_cover,
+    nullif(m->>'neige_au_sol', '')::numeric     as snow_depth,
+    nullif(m->>'temps_omm', '')::int            as weather_code
 from mesures
