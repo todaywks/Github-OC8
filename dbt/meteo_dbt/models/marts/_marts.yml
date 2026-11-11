@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_weather_stations
+    description: "Une ligne par station météo, tous réseaux confondus, avec les métadonnées des stations amateurs issues de l'énoncé."
+    columns:
+      - name: station_id
+        description: "Identifiant de la station, clé de la dimension."
+        data_tests:
+          - not_null
+          - unique
+      - name: source_network
+        description: "Réseau d'origine de la station."
+        data_tests:
+          - not_null
+          - accepted_values:
+              arguments:
+                values: ['infoclimat', 'weather_underground']
+
+  - name: dim_date
+    description: "Une ligne par jour présent dans les mesures, avec des attributs calendaires."
+    columns:
+      - name: date_key
+        description: "Date au format entier AAAAMMJJ, clé de la dimension."
+        data_tests:
+          - not_null
+          - unique
+
+  - name: fact_weather_measurements
+    description: "Une ligne par station et par instant de mesure, exprimée en unités communes (°C, hPa, km/h, mm) et en UTC."
+    columns:
+      - name: station_id
+        description: "Station de la mesure, clé étrangère vers dim_weather_stations."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_weather_stations')
+                field: station_id
+      - name: date_key
+        description: "Jour de la mesure, clé étrangère vers dim_date."
+        data_tests:
+          - not_null
+          - relationships:
+              arguments:
+                to: ref('dim_date')
+                field: date_key
+      - name: measured_at_utc
+        description: "Instant de la mesure, en UTC."
+        data_tests:
+          - not_null
+      - name: temperature_c
+        description: "Température de l'air en degrés Celsius."
+        data_tests:
+          - not_null:
+              config:
+                severity: warn

@@ -1,3 +1,8 @@
+{{ config(
+    indexes=[
+        {'columns': ['date_key'], 'unique': True}
+    ]
+) }}
 with days as (
     select distinct measured_at_utc::date as date_day
     from {{ ref('int_weather_measurements') }}

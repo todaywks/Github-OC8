@@ -1,3 +1,8 @@
+{{ config(
+    indexes=[
+        {'columns': ['station_id'], 'unique': True}
+    ]
+) }}
 select
     station_id,
     station_name,

@@ -1,3 +1,11 @@
+{{ config(
+    indexes=[
+        {'columns': ['station_id', 'measured_at_utc'], 'unique': True},
+        {'columns': ['date_key']},
+        {'columns': ['measured_at_utc']}
+    ]
+) }}
+
 select
     station_id,
     to_char(measured_at_utc::date, 'YYYYMMDD')::int as date_key,
