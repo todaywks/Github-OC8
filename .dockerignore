@@ -1,0 +1,3 @@
+dbt/meteo_dbt/target/
+dbt/meteo_dbt/logs/
+.env
